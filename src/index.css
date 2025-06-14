@@ -49,11 +49,18 @@ body {
   margin-bottom: 10px;
 }
 
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .board {
   width: 540px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 30px;
 }
 
 .cell {
@@ -79,6 +86,26 @@ body {
   font-size: large;
   text-align: center;
   margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.game-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.game-end-modal {
+  font-size: x-large;
+  text-align: center;
+  margin-bottom: 10px;
+  width: 200px;
+  position: absolute;
+  top: 45%;
+  left: calc(50% - 100px);
+  background-color: #ffe8cc;
+  padding: 30px;
+  border-radius: 7px;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .button:hover {
