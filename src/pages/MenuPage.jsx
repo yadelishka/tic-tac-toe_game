@@ -9,7 +9,11 @@ export function MenuPage({ onNewGame }) {
 
   return (
     <div className="menu">
-      <Button disabled={isBlockContinue} onClick={onNewGame}>
+      <Button
+        disabled={isBlockContinue}
+        onClick={onNewGame}
+        disabledClassName={isBlockContinue}
+      >
         Продолжить
       </Button>
       <Button onClick={onNewGame}>Новая игра</Button>

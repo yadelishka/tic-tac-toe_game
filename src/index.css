@@ -44,6 +44,11 @@ body {
   transition: 0.3s;
 }
 
+.disabled-btn {
+  background-color: #afbbc7;
+  pointer-events: none;
+}
+
 .header {
   text-align: center;
   margin-bottom: 10px;
