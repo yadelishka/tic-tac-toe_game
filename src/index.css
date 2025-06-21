@@ -63,6 +63,10 @@ body {
   margin-bottom: 30px;
 }
 
+.disabled {
+  pointer-events: none;
+}
+
 .cell {
   background-color: var(--color-medium);
   color: #343a40;
@@ -82,7 +86,7 @@ body {
   font-size: xx-large;
 }
 
-.active-player-label {
+.player-label {
   font-size: large;
   text-align: center;
   margin-top: 10px;
@@ -100,12 +104,19 @@ body {
   margin-bottom: 10px;
   width: 200px;
   position: absolute;
-  top: 45%;
+  top: -100px;
   left: calc(50% - 100px);
   background-color: #ffe8cc;
   padding: 30px;
   border-radius: 7px;
   box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
+  transition: top 0.5s;
+  opacity: 0;
+}
+
+.game-end-modal-visible {
+  top: 30px;
+  opacity: 1;
 }
 
 .button:hover {
