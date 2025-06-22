@@ -32,6 +32,8 @@ export function MenuPage({
             onStartNewGame();
           }}
           onCancel={() => setShowConfirmation(false)}
+          modalClassName="new-game-modal"
+          buttonClassName="button"
         />
       )}
       <Button>Об авторе</Button>

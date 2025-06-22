@@ -89,9 +89,11 @@ export function GamePage({
             message="Вы уверены, что хотите начать новую игру?"
             onConfirm={() => {
               setShowConfirmation(false);
-              onStartNewGame();
+              restartGame();
             }}
             onCancel={() => setShowConfirmation(false)}
+            modalClassName="new-game-modal"
+            buttonClassName="button"
           />
         )}
       </div>

@@ -1,10 +1,20 @@
-export function ConfirmationModal({ message, onConfirm, onCancel }) {
+export function ConfirmationModal({
+  message,
+  onConfirm,
+  onCancel,
+  modalClassName = "",
+  buttonClassName = "",
+}) {
   return (
     <div>
-      <div>
+      <div className={`${modalClassName}`}>
         <p>{message}</p>
-        <button onClick={onConfirm}>Да</button>
-        <button onClick={onCancel}>Нет</button>
+        <button onClick={onConfirm} className={`${buttonClassName}`}>
+          Да
+        </button>
+        <button onClick={onCancel} className={`${buttonClassName}`}>
+          Нет
+        </button>
       </div>
     </div>
   );

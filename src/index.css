@@ -124,6 +124,21 @@ body {
   opacity: 1;
 }
 
+.new-game-modal {
+  font-size: large;
+  text-align: center;
+  margin-bottom: 10px;
+  width: 400px;
+  position: absolute;
+  top: 30px;
+  left: calc(50% - 200px);
+  background-color: #ffe8cc;
+  padding: 30px;
+  border-radius: 7px;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
 .button:hover {
   background-color: var(--color-dark);
 }
