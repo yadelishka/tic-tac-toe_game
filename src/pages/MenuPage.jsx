@@ -1,7 +1,7 @@
 import { Button } from "../components/shared/Button";
 import { load } from "../utils/localStorage";
 
-export function MenuPage({ onNewGame }) {
+export function MenuPage({ onStartNewGame, onContinueGame }) {
   const gameData = load("gameSave");
   const isBlockContinue = !gameData;
 
@@ -11,12 +11,12 @@ export function MenuPage({ onNewGame }) {
     <div className="menu">
       <Button
         disabled={isBlockContinue}
-        onClick={onNewGame}
+        onClick={onContinueGame}
         disabledClassName={isBlockContinue}
       >
         Продолжить
       </Button>
-      <Button onClick={onNewGame}>Новая игра</Button>
+      <Button onClick={onStartNewGame}>Новая игра</Button>
       <Button>Об авторе</Button>
     </div>
   );

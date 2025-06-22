@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { GamePage } from "./pages/GamePage";
 import { MenuPage } from "./pages/MenuPage";
-import { load } from "./utils/localStorage";
+import { clear, load } from "./utils/localStorage";
 
 export const initialCells = new Array(25).fill(0, 0, 25);
 
@@ -25,8 +25,13 @@ export default function App() {
   );
   const [gameState, setGameState] = useState(GAME_STATE.Menu);
 
+  function continueGame() {
+    setGameState(GAME_STATE.Playing);
+  }
+
   function startNewGame() {
     setGameState(GAME_STATE.Playing);
+    clear();
   }
 
   function returnToMenu() {
@@ -44,7 +49,9 @@ export default function App() {
   return (
     <div>
       <h1 className="header">Крестики-нолики</h1>
-      {isInMenu && <MenuPage onNewGame={startNewGame} />}
+      {isInMenu && (
+        <MenuPage onContinueGame={continueGame} onStartNewGame={startNewGame} />
+      )}
       {(isPlaying || isEndGame) && (
         <GamePage
           activePlayerValue={activePlayerValue}
