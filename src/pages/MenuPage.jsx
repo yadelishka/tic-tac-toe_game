@@ -1,7 +1,14 @@
+import { ConfirmationModal } from "../components/ConfirmationModal";
 import { Button } from "../components/shared/Button";
 import { load } from "../utils/localStorage";
 
-export function MenuPage({ onStartNewGame, onContinueGame }) {
+export function MenuPage({
+  onStartNewGame,
+  onContinueGame,
+  showConfirmation,
+  setShowConfirmation,
+  onNewGameClick,
+}) {
   const gameData = load("gameSave");
   const isBlockContinue = !gameData;
 
@@ -16,7 +23,17 @@ export function MenuPage({ onStartNewGame, onContinueGame }) {
       >
         Продолжить
       </Button>
-      <Button onClick={onStartNewGame}>Новая игра</Button>
+      <Button onClick={onNewGameClick}>Новая игра</Button>
+      {showConfirmation && (
+        <ConfirmationModal
+          message="Вы уверены, что хотите начать новую игру?"
+          onConfirm={() => {
+            setShowConfirmation(false);
+            onStartNewGame();
+          }}
+          onCancel={() => setShowConfirmation(false)}
+        />
+      )}
       <Button>Об авторе</Button>
     </div>
   );

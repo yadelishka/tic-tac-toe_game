@@ -7,6 +7,7 @@ import { WinnerPlayerLabel } from "../components/WinnerPlayerLabel";
 import { Board } from "../components/Board";
 import { Button } from "../components/shared/Button";
 import { load, save } from "../utils/localStorage";
+import { ConfirmationModal } from "../components/ConfirmationModal";
 
 export function GamePage({
   activePlayerValue,
@@ -15,6 +16,9 @@ export function GamePage({
   onEndGame,
   gameState,
   onStartNewGame,
+  showConfirmation,
+  setShowConfirmation,
+  onNewGameClick,
 }) {
   const gameData = load("gameSave");
 
@@ -79,7 +83,17 @@ export function GamePage({
       />
       <div className="game-actions">
         <Button onClick={onReturnToMenu}>В меню</Button>
-        <Button onClick={restartGame}>Новая игра</Button>
+        <Button onClick={onNewGameClick}>Новая игра</Button>
+        {showConfirmation && (
+          <ConfirmationModal
+            message="Вы уверены, что хотите начать новую игру?"
+            onConfirm={() => {
+              setShowConfirmation(false);
+              onStartNewGame();
+            }}
+            onCancel={() => setShowConfirmation(false)}
+          />
+        )}
       </div>
     </>
   );

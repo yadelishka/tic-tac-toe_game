@@ -31,6 +31,7 @@ export default function App() {
 
   function startNewGame() {
     setGameState(GAME_STATE.Playing);
+    setActivePlayerValue(1);
     clear();
   }
 
@@ -46,11 +47,23 @@ export default function App() {
   const isPlaying = gameState === GAME_STATE.Playing;
   const isEndGame = gameState === GAME_STATE.EndGame;
 
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const handleNewGameClick = () => {
+    setShowConfirmation(true);
+  };
+
   return (
     <div>
       <h1 className="header">Крестики-нолики</h1>
       {isInMenu && (
-        <MenuPage onContinueGame={continueGame} onStartNewGame={startNewGame} />
+        <MenuPage
+          onContinueGame={continueGame}
+          onStartNewGame={startNewGame}
+          showConfirmation={showConfirmation}
+          setShowConfirmation={setShowConfirmation}
+          onNewGameClick={handleNewGameClick}
+        />
       )}
       {(isPlaying || isEndGame) && (
         <GamePage
@@ -60,6 +73,9 @@ export default function App() {
           onEndGame={endGame}
           gameState={gameState}
           onStartNewGame={startNewGame}
+          showConfirmation={showConfirmation}
+          setShowConfirmation={setShowConfirmation}
+          onNewGameClick={handleNewGameClick}
         />
       )}
     </div>
