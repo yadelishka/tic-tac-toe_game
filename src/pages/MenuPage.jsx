@@ -15,15 +15,18 @@ export function MenuPage({
   console.log(isBlockContinue);
 
   return (
-    <div className="menu">
-      <Button
-        disabled={isBlockContinue}
-        onClick={onContinueGame}
-        disabledClassName={isBlockContinue}
-      >
-        Продолжить
-      </Button>
-      <Button onClick={onNewGameClick}>Новая игра</Button>
+    <>
+      <div className="menu">
+        <Button
+          disabled={isBlockContinue}
+          onClick={onContinueGame}
+          disabledClassName={isBlockContinue}
+        >
+          Продолжить
+        </Button>
+        <Button onClick={onNewGameClick}>Новая игра</Button>
+        <Button>Об авторе</Button>
+      </div>
       {showConfirmation && (
         <ConfirmationModal
           message="Вы уверены, что хотите начать новую игру?"
@@ -36,7 +39,6 @@ export function MenuPage({
           buttonClassName="button"
         />
       )}
-      <Button>Об авторе</Button>
-    </div>
+    </>
   );
 }
