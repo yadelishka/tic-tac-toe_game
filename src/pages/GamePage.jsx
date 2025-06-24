@@ -6,7 +6,7 @@ import { ActivePlayerLabel } from "../components/ActivePlayerLabel";
 import { WinnerPlayerLabel } from "../components/WinnerPlayerLabel";
 import { Board } from "../components/Board";
 import { Button } from "../components/shared/Button";
-import { load, save } from "../utils/localStorage";
+import { clear, load, save } from "../utils/localStorage";
 import { ConfirmationModal } from "../components/ConfirmationModal";
 
 export function GamePage({
@@ -47,6 +47,7 @@ export function GamePage({
 
     if (winIndexes) {
       setWinningCells(winIndexes);
+      clear("gameSave");
       return onEndGame();
     }
 
