@@ -50,7 +50,8 @@ export default function App() {
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleNewGameClick = () => {
-    setShowConfirmation(true);
+    if (gameData !== null) setShowConfirmation(true);
+    else startNewGame();
   };
 
   return (
