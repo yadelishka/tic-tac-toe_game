@@ -38,6 +38,7 @@ export function MenuPage({
         modalClassName="new-game-modal"
         buttonClassName="button"
         showConfirmation={showConfirmation}
+        overlayClassName={"confirm-modal-overlay"}
       />
     </>
   );

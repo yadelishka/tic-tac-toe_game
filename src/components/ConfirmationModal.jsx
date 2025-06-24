@@ -5,10 +5,16 @@ export function ConfirmationModal({
   modalClassNameVisible = "",
   modalClassName = "",
   buttonClassName = "",
+  overlayClassName = "",
   showConfirmation,
 }) {
   return (
     <div>
+      <div
+        className={showConfirmation ? `${overlayClassName}` : ""}
+        onClick={onCancel}
+      />
+
       <div
         className={
           showConfirmation

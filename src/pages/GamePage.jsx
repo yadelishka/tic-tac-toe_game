@@ -95,6 +95,7 @@ export function GamePage({
           modalClassName="new-game-modal"
           buttonClassName="button"
           showConfirmation={showConfirmation}
+          overlayClassName={"confirm-modal-overlay"}
         />
       </div>
     </>
