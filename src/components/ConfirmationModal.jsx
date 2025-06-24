@@ -9,12 +9,14 @@ export function ConfirmationModal({
     <div>
       <div className={`${modalClassName}`}>
         <p>{message}</p>
-        <button onClick={onConfirm} className={`${buttonClassName}`}>
-          Да
-        </button>
-        <button onClick={onCancel} className={`${buttonClassName}`}>
-          Нет
-        </button>
+        <div>
+          <button onClick={onConfirm} className={`${buttonClassName}`}>
+            Да
+          </button>
+          <button onClick={onCancel} className={`${buttonClassName}`}>
+            Нет
+          </button>
+        </div>
       </div>
     </div>
   );

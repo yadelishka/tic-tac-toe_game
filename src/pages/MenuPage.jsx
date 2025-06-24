@@ -35,7 +35,7 @@ export function MenuPage({
             onStartNewGame();
           }}
           onCancel={() => setShowConfirmation(false)}
-          modalClassName="new-game-modal"
+          modalClassName="new-game-modal-visible"
           buttonClassName="button"
         />
       )}

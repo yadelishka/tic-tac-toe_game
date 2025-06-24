@@ -92,7 +92,7 @@ export function GamePage({
               restartGame();
             }}
             onCancel={() => setShowConfirmation(false)}
-            modalClassName="new-game-modal"
+            modalClassName="new-game-modal-visible"
             buttonClassName="button"
           />
         )}
