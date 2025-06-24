@@ -84,18 +84,18 @@ export function GamePage({
       <div className="game-actions">
         <Button onClick={onReturnToMenu}>В меню</Button>
         <Button onClick={onNewGameClick}>Новая игра</Button>
-        {showConfirmation && (
-          <ConfirmationModal
-            message="Вы уверены, что хотите начать новую игру?"
-            onConfirm={() => {
-              setShowConfirmation(false);
-              restartGame();
-            }}
-            onCancel={() => setShowConfirmation(false)}
-            modalClassName="new-game-modal-visible"
-            buttonClassName="button"
-          />
-        )}
+        <ConfirmationModal
+          message="Вы уверены, что хотите начать новую игру?"
+          onConfirm={() => {
+            setShowConfirmation(false);
+            restartGame();
+          }}
+          onCancel={() => setShowConfirmation(false)}
+          modalClassNameVisible="new-game-modal-visible"
+          modalClassName="new-game-modal"
+          buttonClassName="button"
+          showConfirmation={showConfirmation}
+        />
       </div>
     </>
   );

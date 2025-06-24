@@ -27,18 +27,18 @@ export function MenuPage({
         <Button onClick={onNewGameClick}>Новая игра</Button>
         <Button>Об авторе</Button>
       </div>
-      {showConfirmation && (
-        <ConfirmationModal
-          message="Вы уверены, что хотите начать новую игру?"
-          onConfirm={() => {
-            setShowConfirmation(false);
-            onStartNewGame();
-          }}
-          onCancel={() => setShowConfirmation(false)}
-          modalClassName="new-game-modal-visible"
-          buttonClassName="button"
-        />
-      )}
+      <ConfirmationModal
+        message="Вы уверены, что хотите начать новую игру?"
+        onConfirm={() => {
+          setShowConfirmation(false);
+          onStartNewGame();
+        }}
+        onCancel={() => setShowConfirmation(false)}
+        modalClassNameVisible="new-game-modal-visible"
+        modalClassName="new-game-modal"
+        buttonClassName="button"
+        showConfirmation={showConfirmation}
+      />
     </>
   );
 }
