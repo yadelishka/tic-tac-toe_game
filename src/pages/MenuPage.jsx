@@ -1,4 +1,4 @@
-import { ConfirmationModal } from "../components/ConfirmationModal";
+import { ConfirmationModal } from "../components/shared/ConfirmationModal";
 import { Button } from "../components/shared/Button";
 import { load } from "../utils/localStorage";
 

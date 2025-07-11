@@ -7,7 +7,7 @@ import { WinnerPlayerLabel } from "../components/WinnerPlayerLabel";
 import { Board } from "../components/Board";
 import { Button } from "../components/shared/Button";
 import { clear, load, save } from "../utils/localStorage";
-import { ConfirmationModal } from "../components/ConfirmationModal";
+import { ConfirmationModal } from "../components/shared/ConfirmationModal";
 
 export function GamePage({
   activePlayerValue,
