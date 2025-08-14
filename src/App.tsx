@@ -1,21 +1,29 @@
 import { useState } from "react";
-import { GamePage } from "./pages/GamePage";
-import { MenuPage } from "./pages/MenuPage";
 import { clear, load } from "./utils/localStorage";
+import { MenuPage } from "./pages/MenuPage";
+import { GamePage } from "./pages/GamePage";
 
-export const initialCells = new Array(25).fill(0, 0, 25);
+export const initialCells: number[] = new Array(25).fill(0, 0, 25);
+
+export enum CellState {
+  Empty = 0,
+  PlayerCross = 1,
+  PlayerNull = 2,
+}
+
+export type ActivePlayerValue = CellState.PlayerCross | CellState.PlayerNull;
 
 export const cellViews = {
-  0: "",
-  1: "X",
-  2: "O",
+  [CellState.Empty]: "",
+  [CellState.PlayerCross]: "X",
+  [CellState.PlayerNull]: "O",
 };
 
-export const GAME_STATE = {
-  Menu: "menu",
-  Playing: "playing",
-  EndGame: "endGame",
-};
+export enum GameState {
+  Menu = "menu",
+  Playing = "playing",
+  EndGame = "endGame",
+}
 
 export default function App() {
   const gameData = load("gameSave");
@@ -23,29 +31,29 @@ export default function App() {
   const [activePlayerValue, setActivePlayerValue] = useState(
     gameData?.activePlayer ?? 1
   );
-  const [gameState, setGameState] = useState(GAME_STATE.Menu);
+  const [gameState, setGameState] = useState(GameState.Menu);
 
   function continueGame() {
-    setGameState(GAME_STATE.Playing);
+    setGameState(GameState.Playing);
   }
 
   function startNewGame() {
-    setGameState(GAME_STATE.Playing);
+    setGameState(GameState.Playing);
     setActivePlayerValue(1);
     clear();
   }
 
   function returnToMenu() {
-    setGameState(GAME_STATE.Menu);
+    setGameState(GameState.Menu);
   }
 
   function endGame() {
-    setGameState(GAME_STATE.EndGame);
+    setGameState(GameState.EndGame);
   }
 
-  const isInMenu = gameState === GAME_STATE.Menu;
-  const isPlaying = gameState === GAME_STATE.Playing;
-  const isEndGame = gameState === GAME_STATE.EndGame;
+  const isInMenu = gameState === GameState.Menu;
+  const isPlaying = gameState === GameState.Playing;
+  const isEndGame = gameState === GameState.EndGame;
 
   const [showConfirmation, setShowConfirmation] = useState(false);
 

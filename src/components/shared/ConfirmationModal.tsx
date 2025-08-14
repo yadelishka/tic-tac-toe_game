@@ -1,3 +1,14 @@
+interface ConfirmationModalProps {
+  message: string;
+  onConfirm: () => void;
+  onCancel: () => void;
+  modalClassNameVisible?: string;
+  modalClassName?: string;
+  buttonClassName?: string;
+  overlayClassName?: string;
+  showConfirmation: boolean;
+}
+
 export function ConfirmationModal({
   message,
   onConfirm,
@@ -7,7 +18,7 @@ export function ConfirmationModal({
   buttonClassName = "",
   overlayClassName = "",
   showConfirmation,
-}) {
+}: ConfirmationModalProps) {
   return (
     <div>
       <div

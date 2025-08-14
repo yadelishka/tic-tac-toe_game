@@ -1,8 +1,20 @@
-import { GAME_STATE } from "../App";
+import { GameState } from "../App";
 import { Cell } from "./Cell";
 
-export function Board({ cells, changeCellValue, winningCells, gameState }) {
-  const isDisabled = gameState === GAME_STATE.EndGame;
+interface BoardProps {
+  cells: number[];
+  changeCellValue: (index: number) => void;
+  winningCells: number[];
+  gameState: GameState;
+}
+
+export function Board({
+  cells,
+  changeCellValue,
+  winningCells,
+  gameState,
+}: BoardProps) {
+  const isDisabled = gameState === GameState.EndGame;
 
   return (
     <div className={isDisabled ? "board disabled" : "board"}>

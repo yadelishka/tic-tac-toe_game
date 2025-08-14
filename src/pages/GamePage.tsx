@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { initialCells, GAME_STATE } from "../App";
+import { initialCells, GameState } from "../App";
 import { checkWinCondition } from "../utils/checkWinCondition";
 import { GameEndModal } from "../components/GameEndModal";
 import { ActivePlayerLabel } from "../components/ActivePlayerLabel";
@@ -8,6 +8,18 @@ import { Board } from "../components/Board";
 import { Button } from "../components/shared/Button";
 import { clear, load, save } from "../utils/localStorage";
 import { ConfirmationModal } from "../components/shared/ConfirmationModal";
+
+interface GamePageProps {
+  activePlayerValue: number;
+  setActivePlayerValue: (value: number) => void;
+  onReturnToMenu: () => void;
+  onEndGame: () => void;
+  gameState: GameState;
+  onStartNewGame: () => void;
+  showConfirmation: boolean;
+  setShowConfirmation: (value: boolean) => void;
+  onNewGameClick: () => void;
+}
 
 export function GamePage({
   activePlayerValue,
@@ -19,13 +31,13 @@ export function GamePage({
   showConfirmation,
   setShowConfirmation,
   onNewGameClick,
-}) {
+}: GamePageProps) {
   const gameData = load("gameSave");
 
   console.log(gameData);
 
   const [cells, setCells] = useState(gameData?.cells ?? initialCells);
-  const [winningCells, setWinningCells] = useState([]);
+  const [winningCells, setWinningCells] = useState<number[]>([]);
 
   function restartGame() {
     setCells(cells.map((cell) => 0));
@@ -34,7 +46,7 @@ export function GamePage({
     onStartNewGame();
   }
 
-  function changeCellValue(index) {
+  function changeCellValue(index: number) {
     if (cells[index] !== 0) return;
 
     const newCells = cells.map((cell, idx) =>
@@ -47,7 +59,7 @@ export function GamePage({
 
     if (winIndexes) {
       setWinningCells(winIndexes);
-      clear("gameSave");
+      clear();
       return onEndGame();
     }
 
@@ -59,8 +71,8 @@ export function GamePage({
     });
   }
 
-  const isPlaying = gameState === GAME_STATE.Playing;
-  const isEndGame = gameState === GAME_STATE.EndGame;
+  const isPlaying = gameState === GameState.Playing;
+  const isEndGame = gameState === GameState.EndGame;
 
   return (
     <>
@@ -74,10 +86,7 @@ export function GamePage({
         <WinnerPlayerLabel />
       )}
       <Board
-        activePlayerValue={activePlayerValue}
-        setActivePlayerValue={setActivePlayerValue}
         cells={cells}
-        setCells={setCells}
         changeCellValue={changeCellValue}
         winningCells={winningCells}
         gameState={gameState}

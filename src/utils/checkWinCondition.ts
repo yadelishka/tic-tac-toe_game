@@ -1,4 +1,10 @@
-function checkHorizontal(lastMoveIndex, cells, value, rowIndex, columnCount) {
+function checkHorizontal(
+  lastMoveIndex: number,
+  cells: number[],
+  value: number,
+  rowIndex: number,
+  columnCount: number
+) {
   const winningCells = [lastMoveIndex];
 
   // Проверка вправо
@@ -24,7 +30,13 @@ function checkHorizontal(lastMoveIndex, cells, value, rowIndex, columnCount) {
   return winningCells;
 }
 
-function checkVertical(lastMoveIndex, cells, value, columnIndex, columnCount) {
+function checkVertical(
+  lastMoveIndex: number,
+  cells: number[],
+  value: number,
+  columnIndex: number,
+  columnCount: number
+) {
   const winningCells = [lastMoveIndex];
 
   // Проверка вверх
@@ -52,7 +64,13 @@ function checkVertical(lastMoveIndex, cells, value, columnIndex, columnCount) {
   return winningCells;
 }
 
-function checkDiagonalLeft(lastMoveIndex, cells, value, rowIndex, columnCount) {
+function checkDiagonalLeft(
+  lastMoveIndex: number,
+  cells: number[],
+  value: number,
+  rowIndex: number,
+  columnCount: number
+) {
   const winningCells = [lastMoveIndex];
 
   // Проверка вниз-вправо
@@ -83,11 +101,11 @@ function checkDiagonalLeft(lastMoveIndex, cells, value, rowIndex, columnCount) {
 }
 
 function checkDiagonalRight(
-  lastMoveIndex,
-  cells,
-  value,
-  rowIndex,
-  columnCount
+  lastMoveIndex: number,
+  cells: number[],
+  value: number,
+  rowIndex: number,
+  columnCount: number
 ) {
   const winningCells = [lastMoveIndex];
 
@@ -119,13 +137,14 @@ function checkDiagonalRight(
 }
 
 export function checkWinCondition(
-  lastMoveIndex,
-  cells,
-  rowCount,
-  columnCount,
-  winCount
+  lastMoveIndex: number,
+  cells: number[],
+  rowCount: number,
+  columnCount: number,
+  winCount: number
 ) {
   const value = cells[lastMoveIndex];
+  if (!value) return false;
   const rowIndex = Math.floor(lastMoveIndex / columnCount);
   const columnIndex = lastMoveIndex % columnCount;
   let winningCells = [];
